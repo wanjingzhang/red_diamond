@@ -145,6 +145,6 @@ let pattern5 = new RegExp("[bc]at",'i');
 // console.log(pattern.lastIndex);  // 0
 
 // 模式匹配字符串
-let text = "cat, bat, sat, fat";    
-result = text.replace(/(.at)/g, "word ($1)");
-console.log(result);  // word (cat), word (bat), word (sat), word (fat)
+// let text = "cat bat sat fat";    
+// result = text.replace(/(.at)/g, "word ($1)");
+// console.log(result);  // word (cat), word (bat), word (sat), word (fat)

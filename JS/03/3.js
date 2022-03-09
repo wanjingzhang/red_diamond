@@ -117,14 +117,14 @@ Reflect.ownKeys(o); //['age', Symbol(job), Symbol(where), Symbol(gender)]
 // 1. *
 // function* trick(){
 //   yield '1. clean the elephant';
-//   yield '2. open the door ofr refrigerator';
+//   yield '2. open the door of refrigerator';
 //   yield '3. push the elephant to the refrigerator';
 //   yield '4. close the door of refrigerator';
 //   return '5. the elephant has been locked in the refrigerator successfully'
 // }
 // let how_to_locked_the_elephant = trick();
 // console.log(how_to_locked_the_elephant.next()); // {value: '1. clean the elephant', done: false}
-// console.log(how_to_locked_the_elephant.next()); // {value: '2. open the door ofr refrigerator', done: false}
+// console.log(how_to_locked_the_elephant.next()); // {value: '2. open the door of refrigerator', done: false}
 // console.log(how_to_locked_the_elephant.next()); // {value: '3. push the elephant to the refrigerator', done: false}
 // console.log(how_to_locked_the_elephant.next()); // {value: '4. close the door of refrigerator', done: false}
 // console.log(how_to_locked_the_elephant.next()); // {value: '5. the elephant has been locked in the refrigerator successfully', done: true}
@@ -149,15 +149,15 @@ Reflect.ownKeys(o); //['age', Symbol(job), Symbol(where), Symbol(gender)]
 
 
 // 3. *
-// function* trick(){
-//   yield '1. clean the elephant';
-//   yield '2. open the door ofr refrigerator';
-//   yield '3. push the elephant to the refrigerator';
-//   yield '4. close the door of refrigerator';
-//   return '5. the elephant has been locked in the refrigerator successfully'
-// }
-// let myTrick = trick();
-// for(let i  of myTrick){
-//   console.log(i);
-// }
+function* trick(){
+  yield '1. clean the elephant';
+  yield '2. open the door ofr refrigerator';
+  yield '3. push the elephant to the refrigerator';
+  yield '4. close the door of refrigerator';
+  yield '5. the elephant has been locked in the refrigerator successfully'
+}
+let myTrick = trick();
+for(let i of myTrick){
+  console.log(i);
+}
 
