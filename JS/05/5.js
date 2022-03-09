@@ -1,6 +1,6 @@
 // let date = new Date();
-// console.log(date.getTimezoneOffset());
-// console.log(date.valueOf());
+// console.log(date.getTimezoneOffset()); // 日期偏移量 -480
+// console.log(date.valueOf()); // 毫秒 1646783357919
 
 // 正则
 // 匹配所有的"at"
@@ -84,22 +84,22 @@ let pattern5 = new RegExp("[bc]at",'i');
 // console.log(pattern.lastIndex);   // 8
 
 // 3. 正则表达式的全局标示
-let text = "cat, bat, sat, fat";    
-let pattern = /.at/g;     
-let matches = pattern.exec(text);    
-console.log(matches.index);       // 0
-console.log(matches[0]);          // cat
-console.log(pattern.lastIndex);   // 3 
-// 以索引3对呀的字符开头找不到匹配项，返回null
-matches = pattern.exec(text);    
-console.log(matches);             // ['bat', index: 5, input: 'cat, bat, sat, fat', groups: undefined]
-console.log(pattern.lastIndex);   // 8
-// 向前设置lastIndex可以使粘附模式找到下个匹配项
+// let text = "cat, bat, sat, fat";    
+// let pattern = /.at/g;     
+// let matches = pattern.exec(text);    
+// console.log(matches.index);       // 0
+// console.log(matches[0]);          // cat
+// console.log(pattern.lastIndex);   // 3 
+// // 以索引3的字符开头找不到匹配项，返回null
+// matches = pattern.exec(text);    
+// console.log(matches);             // ['bat', index: 5, input: 'cat, bat, sat, fat', groups: undefined]
+// console.log(pattern.lastIndex);   // 8
+// // 向前设置lastIndex可以使粘附模式找到下个匹配项
 
-matches = pattern.exec(text);    
-console.log(matches.index);       // 10
-console.log(matches[0]);          // sat
-console.log(pattern.lastIndex);   // 13
+// matches = pattern.exec(text);    
+// console.log(matches.index);       // 10
+// console.log(matches[0]);          // sat
+// console.log(pattern.lastIndex);   // 13
 
 
 // 1. test
@@ -113,3 +113,38 @@ console.log(pattern.lastIndex);   // 13
 // let pattern = new RegExp("\\[bc\\]at", "gi"); 
 // console.log(pattern.toString());      // /\[bc\]at/gi
 // console.log(pattern.toLocaleString());  // /\[bc\]at/gi
+
+
+// let str3 = 'hello';
+// str3.concat(' world','!'); // hello world! 拼接字符串
+
+
+// let strValue = "Hello World!";
+// let start = 0, end = 3, count = 6;
+// console.log(strValue.slice(start,end)); // Hel 开始，结束 位置
+// console.log(strValue.substring(start,end)); // Hel 开始，结束 位置
+// console.log(strValue.substr(start,count)); // Hello 开始，长度
+// console.log(strValue.startsWith("a",1)) // false
+// console.log(strValue.repeat(3)) // Hello World!Hello World!Hello World!
+// console.log(strValue.padStart(8)) // 未预期
+
+// 字符解构
+// let message = "abc";
+// let stringIterator = message[Symbol.iterator]();
+// console.log(stringIterator.next());  // {value: "a", done: false}
+// console.log(stringIterator.next());  // {value: "b", done: false}
+// console.log(stringIterator.next());  // {value: "c", done: false}
+// console.log(stringIterator.next());  // {value: undefined, done: true}
+
+// let text = "cat, bat, sat, fat";    
+// let pattern = /.at/; 
+// // same as pattern.exec(text)
+// let matches = text.match(pattern);
+// console.log(matches.index);      // 0
+// console.log(matches[0]);         // "cat"
+// console.log(pattern.lastIndex);  // 0
+
+// 模式匹配字符串
+let text = "cat, bat, sat, fat";    
+result = text.replace(/(.at)/g, "word ($1)");
+console.log(result);  // word (cat), word (bat), word (sat), word (fat)
