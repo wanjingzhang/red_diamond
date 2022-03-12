@@ -131,8 +131,122 @@
 // let someResult = numbers.some((item, index, array) => item > 2);      
 // console.log(someResult);   // true
 
-let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1]; 
-let sum = numbers.reduce((prev,cur,index,array) => prev+cur);
-console.log(sum) //25
-let sum2 = numbers.reduceRight((prev,cur,index,array) => prev+cur);
-console.log(sum2) //25
+// let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1]; 
+// let sum = numbers.reduce((prev,cur,index,array) => prev+cur);
+// console.log(sum) //25
+// let sum2 = numbers.reduceRight((prev,cur,index,array) => prev+cur);
+// console.log(sum2) //25
+
+
+
+// 定型数组
+// const buf = new ArrayBuffer(16); // 在内存中16字节
+// const buf2 = buf.slice(4,12); 
+// console.log(buf2.byteLength);
+
+
+// const buf = new ArrayBuffer(16); 
+// // DataView default to use the entire ArrayBuffer
+// const fullDataView = new DataView(buf);
+// console.log(fullDataView.byteOffset);      // 0
+// console.log(fullDataView.byteLength);      // 16
+// console.log(fullDataView.buffer === buf);  // true
+
+// const ints = new Int16Array([1, 2, 3]);
+// const doubleints = ints.map(x => 2*x);
+// console.log(doubleints instanceof Int16Array);  // true
+
+
+
+// 1. Set 方法
+// const container = new Int16Array(8);  
+// container.set(Int8Array.of(1, 2, 3, 4));
+// console.log(container);  // [1,2,3,4,0,0,0,0] 
+// container.set([5,6,7,8], 4); // 从第4个位置插入，0开始到4
+// console.log(container);  // [1,2,3,4,5,6,7,8] 
+// container.set([5,6,7,8], 7); //溢出错误
+
+
+// 2. subarray方法
+// const source = Int16Array.of(2, 4, 6, 8); 
+// // Copies the entire array into a new array of the same type
+// const fullCopy = source.subarray();
+// console.log(fullCopy);  // [2, 4, 6, 8]  
+// const halfCopy = source.subarray(2);//从第2个位置开始复制
+// console.log(halfCopy);  // [6, 8] 
+// const partialCopy = source.subarray(1, 3);//从[1,2]中复制
+// console.log(partialCopy);  // [4, 6] 
+
+// // Map 1. 使用嵌套数组初始化映射
+// const m1 = new Map([
+//     ['key1','val1'],
+//     ['key2','val2'],
+//     ['key3','val3'],
+// ])
+// console.log(m1.size)
+// // 2. 使用迭代器初始化映射
+// const m2 = new Map({
+//     [Symbol.iterator]:function*(){
+//         yield ['key1','val1'];
+//         yield ['key2','val2'];
+//         yield ['key3','val3'];
+//     }
+// })
+// console.log(m2.size)
+
+// Map方法
+// const m = new Map();
+// console.log(m.has("firstName")); //false
+// console.log(m.get("firstName")); //undefined
+// console.log(m.size);// 0
+// m.set('firstName','Celine')
+// .set('lastName','Zhang') // 链式
+// console.log(m.has("firstName")); //true
+// console.log(m.get("firstName")); //Celine
+// console.log(m.size);// 2
+// m.clear()// 清除所有的键值对
+
+
+// 链式
+// const ml = new Map().set('firstName','Celine');
+// console.log(ml.get("firstName"))
+
+
+// 使用function,symbol,object作为键
+// const m = new Map();
+// const funKey = function(){};
+// const smbKey = Symbol();
+// const objKey = new Object();
+// m.set(funKey,'function some value')
+// .set(smbKey,'symbol some value')
+// .set(objKey,'object some value');
+// // console.log(m.get(funKey));// function some value
+// // console.log(m.get(smbKey));// symbol some value
+// // console.log(m.get(objKey));// object some value
+// objKey.attribute = "add test";
+// console.log(m.get(objKey));// object some value
+
+
+// 迭代
+const m = new Map([
+    ['key1','val1'],
+    ['key2','val2'],
+]);
+// console.log(m.entries === m[Symbol.iterator]); //true
+// for(let pair of m.entries()){
+//     console.log(pair);(2)  // ['key1', 'val1']  ['key2', 'val2']
+// }
+// for(let item of m[Symbol.iterator]()){
+//     console.log(item) // 同上
+// }
+// 回调方式 forEach(callback,args)
+// m.forEach((val,key) =>console.log(`${key} -> ${val}`)) // key1 -> val1
+// for(let key of m.keys()){
+//     console.log(key) //key1
+// }
+// for(let val of m.values()){
+//     console.log(val) //val1
+// }
+
+
+
