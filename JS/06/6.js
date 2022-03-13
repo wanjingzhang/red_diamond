@@ -377,3 +377,54 @@
 // const loginButton = document.querySelector('#login');  
 // m.set(loginButton, {disabled: true});
 
+// const iterableItems = [
+//     Array.of(1,2), // 1,2
+//     Int16Array.of(3,4), // 3,4
+//     new Map([[5,6],[7,8]]), // [5,6],[7,8]
+//     new Set([9,10]) // 9,10
+// ]
+// for(const Item of iterableItems){
+//     for(const x of Item){
+//         console.log(x);
+//     }
+// }
+
+// 1. 扩展操作符在对象浅复制时，十分有用
+// let ary1= [1,2,3];
+// let ary2 = [...ary1];
+// console.log(ary1 === ary2) // false
+
+// 2. 可迭代对象构造函数只需要传入一个可迭代对象，即可实现赋值
+// let map1 = new Map([[1,2],[3,4]]);
+// let map2 = new Map(map1);
+// console.log(map1 === map2)// false
+
+// 3. 复制数组的部分元素
+// let ary1 = [1,2,3];
+// let ary2 = [0,...ary1,4,5]; //[0, 1, 2, 3, 4, 5]
+// console.log(ary2)
+
+// 4. 复制数组中对象时，只复制对象的引用
+// let arr1 = [{}];
+// let arr2 = [...arr1];
+// arr1[0].foo = 'bar';
+// console.log(arr2[0])  // {foo:'bar'}
+
+
+// 5. Array.of(),Array.from()  与扩展操作符一起使用的技巧
+// let arr1 = [1,2,3];
+// // 1. 把数组复制到定型数组
+// let typedAry1 = Int16Array.of(...arr1); // 定型数组
+// let typedAry2 = Int16Array.from(arr1); 
+// // console.log(typedAry1);
+// // console.log(typedAry2);
+// // 2. 把数组复制到映射
+// let map = new Map(arr1.map((x)=>[x,'val'+x]));
+// console.log(map); // {1 => 'val1', 2 => 'val2', 3 => 'val3'}
+// // 3. 把数组复制到集合
+// let set = new Set(typedAry2);
+// console.log(set); // Set(3) {1, 2, 3}
+// // 4. 把集合复制回数组
+// let arr2 = [...set];
+// console.log(arr2); // [1, 2, 3]
+
