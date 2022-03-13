@@ -228,10 +228,10 @@
 
 
 // 迭代
-const m = new Map([
-    ['key1','val1'],
-    ['key2','val2'],
-]);
+// const m = new Map([
+//     ['key1','val1'],
+//     ['key2','val2'],
+// ]);
 // console.log(m.entries === m[Symbol.iterator]); //true
 // for(let pair of m.entries()){
 //     console.log(pair);(2)  // ['key1', 'val1']  ['key2', 'val2']
@@ -248,5 +248,132 @@ const m = new Map([
 //     console.log(val) //val1
 // }
 
+// 弱引用
+// const key1 = {id:1};
+// const wm = new WeakMap([[key1,"val1"]])
+// console.log(wm.get(key1)); // val1
+// const wm2 = new WeakMap([["key1","val2"]]); // TypeError类型错误
+// console.log(wm2)
 
+// 弱映射私有变量
+// const wm = new WeakMap();
+// class User{
+//     constructor(id){
+//         this.idProperty = Symbol('id');
+//         this.setId(id);
+//     }
+//     setPrivate(property,value){
+//         const privateMembers = wm.get(this) || {};
+//         privateMembers[property] = value;
+//         wm.set(this,privateMembers);
+//     }
+//     getPrivate(property){
+//         return wm.get(this)[property];
+//     }
+//     setId(id){
+//         this.setPrivate(this.idProperty,id);
+//     }
+//     getId(){
+//         return this.getPrivate(this.idProperty);
+//     }
+// }
+// const user = new User(123);
+// console.log(user.getId());// 123
+// user.setId(456);
+// console.log(user.getId());// 456
+// console.log(wm.get(user)[user.idProperty])// 456
+
+// 使用闭包把WeakMap包装起来 
+// const User = (()=>{   
+//     const wm = new WeakMap();
+//     class User{
+//         constructor(id){
+//             this.idProperty = Symbol('id');
+//             this.setId(id);
+//         }
+//         setPrivate(property,value){
+//             const privateMembers = wm.get(this) || {};
+//             privateMembers[property] = value;
+//             wm.set(this,privateMembers);
+//         }
+//         getPrivate(property){
+//             return wm.get(this)[property];
+//         }
+//         setId(id){
+//             this.setPrivate(this.idProperty,id);
+//         }
+//         getId(){
+//             return this.getPrivate(this.idProperty);
+//         }
+//     }
+//     return User;
+// })();
+
+// const user = new User(123);
+// console.log(user.getId());// 123
+// user.setId(456);
+// console.log(user.getId());// 456
+// console.log(wm.get(user)[user.idProperty])// 引用错误，wm未定义
+
+// DOM元素节点数据 
+// const m = new Map();
+// const lginButton = document.querySelector("#login");
+// m.set(lginButton,{disabled:true});  
+
+// Set 
+// const m = new Set();
+// const s1 = new Set(["val1","val2","val3"]) // 使用数组初 始化集合
+// const s2 = new Set({
+//     [Symbol.iterator]:function*(){ // 使用自定义迭代器 初始化集合
+//         yield "val1";
+//         yield "val2";
+//         yield "val3";
+//     }
+// })
+// console.log(s2.size);
+
+// 2
+// const s = new Set();
+// // console.log(s.has("Matt")); //  false
+// // console.log(s.size); // 0
+// s.add("Matt").add("Frisbie");
+// console.log(s.has("Matt")); //  true
+// console.log(s.size); // 2
+// s.clear() // 销毁 集合实例中的所有值
+// console.log(s.has("Matt")); //  false
+// console.log(s.size); // 0
+
+//3 链式
+// const s = new Set().add("Celine");
+// console.log(s.size);
+
+// 4. 支持多种数据类型
+// const s = new Set();
+// const fnVal = function(){};
+// const sbVal = Symbol();
+// const obVal = new Object();
+// s.add(fnVal).add(sbVal).add(obVal);
+// console.log(s);
+// obVal.flag = true;
+// console.log(s);
+
+// 5. 顺序与迭代
+    // const s = new Set(["val1","val2","val3"]);
+    // console.log(s.values === s[Symbol.iterator]); // true
+    // console.log(s.keys === s[Symbol.iterator]); // true
+    // for(let value of s.values()){
+    //     console.log(value)
+    // }
+    // for(let val of s[Symbol.iterator]()){
+    //     console.log(val)
+    // }
+    // for(let value of s.entries()){
+    //     console.log(value) //['val1', 'val1']
+    // }
+    // s.forEach((val,dupVal) =>  console.log(`${val} -> ${dupVal}`)) // val1 -> val1
+
+//  使用弱集合，给对象打标签
+// const m = new WeakMap(); 
+// const loginButton = document.querySelector('#login');  
+// m.set(loginButton, {disabled: true});
 
