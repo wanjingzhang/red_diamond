@@ -24,7 +24,6 @@
 //                    .add(2)
 //                    .add(3)
 //                    .add(4);
-
 // console.log(Array.from(m));  // [[1, 2], [3, 4]]
 // console.log(Array.from(s));  // [1, 2, 3, 4] 
 
@@ -41,8 +40,7 @@
 //     yield 1;
 //     yield 2; 
 //     yield 3;
-//     yield 4;
-
+//     yield 4; 
 //   }
 // };
 // console.log(Array.from(iter));  // [1, 2, 3, 4]
@@ -67,7 +65,6 @@
 
 // 填充
 // const zeroes = [0, 0, 0, 0, 0];
-
 // // Fill the entire array with 5
 // zeroes.fill(5);
 // console.log(zeroes);   // [5, 5, 5, 5, 5]
@@ -144,7 +141,6 @@
 // const buf2 = buf.slice(4,12); 
 // console.log(buf2.byteLength);
 
-
 // const buf = new ArrayBuffer(16); 
 // // DataView default to use the entire ArrayBuffer
 // const fullDataView = new DataView(buf);
@@ -165,7 +161,6 @@
 // container.set([5,6,7,8], 4); // 从第4个位置插入，0开始到4
 // console.log(container);  // [1,2,3,4,5,6,7,8] 
 // container.set([5,6,7,8], 7); //溢出错误
-
 
 // 2. subarray方法
 // const source = Int16Array.of(2, 4, 6, 8); 
@@ -239,7 +234,7 @@
 // for(let item of m[Symbol.iterator]()){
 //     console.log(item) // 同上
 // }
-// 回调方式 forEach(callback,args)
+// // 回调方式 forEach(callback,args)
 // m.forEach((val,key) =>console.log(`${key} -> ${val}`)) // key1 -> val1
 // for(let key of m.keys()){
 //     console.log(key) //key1
@@ -255,7 +250,7 @@
 // const wm2 = new WeakMap([["key1","val2"]]); // TypeError类型错误
 // console.log(wm2)
 
-// 弱映射私有变量
+// 1. 弱映射私有变量
 // const wm = new WeakMap();
 // class User{
 //     constructor(id){
@@ -283,7 +278,7 @@
 // console.log(user.getId());// 456
 // console.log(wm.get(user)[user.idProperty])// 456
 
-// 使用闭包把WeakMap包装起来 
+// 2. 使用闭包把WeakMap包装起来 
 // const User = (()=>{   
 //     const wm = new WeakMap();
 //     class User{
@@ -308,7 +303,6 @@
 //     }
 //     return User;
 // })();
-
 // const user = new User(123);
 // console.log(user.getId());// 123
 // user.setId(456);
@@ -373,7 +367,7 @@
     // s.forEach((val,dupVal) =>  console.log(`${val} -> ${dupVal}`)) // val1 -> val1
 
 //  使用弱集合，给对象打标签
-// const m = new WeakMap(); 
+// const m = new WeakSet(); 
 // const loginButton = document.querySelector('#login');  
 // m.set(loginButton, {disabled: true});
 
@@ -410,7 +404,6 @@
 // arr1[0].foo = 'bar';
 // console.log(arr2[0])  // {foo:'bar'}
 
-
 // 5. Array.of(),Array.from()  与扩展操作符一起使用的技巧
 // let arr1 = [1,2,3];
 // // 1. 把数组复制到定型数组
@@ -427,4 +420,6 @@
 // // 4. 把集合复制回数组
 // let arr2 = [...set];
 // console.log(arr2); // [1, 2, 3]
+
+// 2022.3.13
 
