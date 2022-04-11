@@ -39,3 +39,5 @@ class Counter2{
         };
     }
 }
+let counter2 = new Counter2(3);
+for(let i of counter2){console.log(i)};
