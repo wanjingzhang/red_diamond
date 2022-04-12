@@ -130,7 +130,43 @@
 // person.sayName('celine');  // My name is celine 3
 
 // - 解构
+let person = {name:"Celine",age:18,job:{title:'software engineer'}};
 // 1. 别名
+// let {name:personName,age:personAge} = person;
+// console.log(personName,personAge); // Celine 18
 // 2. 默认值
+// let {name:personName="celine"} = person;
+// console.log(personName)
 // 3. 原始对象的赋值
-// 4. 引用赋值
+// let personName, personAge;
+// ({name:personName,age:personAge} = person)
+// console.log(personName,personAge); // Celine 18
+// 4. 
+//    1. 结构赋值对象
+// let personCopy = {};
+// ({name:personCopy.name,age:personCopy.age,job:personCopy.job} = person);
+// person.job.title = 'painter'; // 浅拷贝
+// console.log(person)
+// console.log(personCopy)
+//     2. 嵌套解构
+// let {job:{title}}= person;
+// console.log(title); // software engineer
+//     3. 嵌套解构在外层属性没有定义的情况下不能使用！无论源还是目标对象。
+// let personCopy = {};
+//      - 源对象的foo未定义 
+// ({foo:{bar:personCopy.bar}} = person); // TypeError: Cannot read properties of undefined (reading 'bar')
+//      - 目标对象job为定义
+// ({job:{title:personCopy.job.title}} = person); // TypeError: Cannot set properties of undefined (setting 'title')
+//      4. 参数解构
+function printPerson(foo,{name,age},bar){
+    console.log(arguments); // ['1st', {…}, '2nd']
+    console.log(name,age); // Celine 18
+}
+function printPerson2(foo,{name:personName,age:personAge},bar){
+    console.log(arguments); // ['1st', {…}, '2nd']
+    console.log(personName,personAge); // Celine 18
+}
+printPerson('1st',person,'2nd');
+printPerson2('1st',person,'2nd');
+
+
