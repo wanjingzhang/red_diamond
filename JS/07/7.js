@@ -144,7 +144,7 @@ console.log(map[Symbol.iterator]()); // VM11064:7 MapIterator {'a' => 1, 'b' =>
 // for(const x of generatorFn()){
 //     console.log(x); //  1,  2, 3
 // }
-// 2. 
+// 2. yield* 关联迭代器
 // function* generatorFn(){
 //     yield* [1,2,3];
 //     yield* [4,5,6];
@@ -155,17 +155,17 @@ console.log(map[Symbol.iterator]()); // VM11064:7 MapIterator {'a' => 1, 'b' =>
 //     console.log(x); //  1,  2, 3, 4, 5, 6, 7, 8, 9
 // }
 
-// yield实现递归算法, 是最有用的操作，可产生自身
+// yield* 实现递归算法, 是最有用的操作，可产生自身
 // 1. 递归
-function * nTimes(n){
-    if(n>0){
-        yield* nTimes(n-1);
-        yield n-1;
+function* nTimes(n){
+    if(n > 0){                // 1. 递归范围n>0
+        yield* nTimes(n - 1); // 2. 调用递归传入n，yield暂停等待
+        yield n - 1;          // 3. 递归完成一次返回的值
     }
 }
 for(const x of nTimes(3)){
     console.log(x);
-}
+} 
 
 // 2. 双向图 
 // 3. 深度优先遍历
