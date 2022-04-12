@@ -44,11 +44,31 @@ class Node {
         console.log(`${node.id}: ${ids}`);
       }
     }
+    // 是否有连接
+    ifConnected(){
+      const visitedNodes = new Set();
+      function* traverse(nodes){
+        for(const node of nodes){
+          if(!visitedNodes.has(node)){
+            yield node;
+            yield *traverse(node.neighbors);
+          } 
+        }
+      }
+      // 取得集合中的 第一个节点
+      const firstNode = this.nodes[Symbol.iterator]().next().value;
+      // 使用递归生成器迭代每个节点
+      for(const node of traverse([firstNode])){
+        visitedNodes.add(node);
+      }
+      return visitedNodes.size ===  this.nodes.size;
+    }
   }
   
   const g = new RandomGraph(6);
   
   g.print();
+  console.log(g.ifConnected());
   // Example output:
   // 0: 2,3,5
   // 1: 2,3,4,5
