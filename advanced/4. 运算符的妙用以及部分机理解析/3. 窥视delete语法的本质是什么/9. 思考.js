@@ -8,8 +8,8 @@ console.log("delete a        :", delete a);
 var b = 12;
 console.log("delete b        :", delete b);
 
-console.log("delete xxxxxxxxx:", delete xxxxxxxxx);
+console.log("delete xxxxxxxxx:", delete xxxxxxxxx); //不可达
 
 var obj = ({})
-console.log("delete .toString:", delete obj.toString);
+console.log("delete .toString:", delete obj.toString); //不可达
 console.log("obj.toString:", obj.toString);
