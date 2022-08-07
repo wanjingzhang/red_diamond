@@ -8,6 +8,6 @@ const obj = {
     }
 };
 
-console.log(10 + obj);
+console.log(10 + obj); //TypeError: Cannot convert object to primitive value
 
 

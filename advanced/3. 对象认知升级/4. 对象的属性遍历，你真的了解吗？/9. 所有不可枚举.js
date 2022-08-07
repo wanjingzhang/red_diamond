@@ -43,17 +43,18 @@ Object.defineProperty(person, symbolSalary, {
 
 //
 function getNoEnumerable(_obj) {
-    //获取原型对象
+    //获取原型对象 慢
     const keys = Reflect.ownKeys(_obj);
-    // const result = keys.filter(key=> {
-    //     return !Object.getOwnPropertyDescriptor(_obj, key).enumerable
-    // }) 
-    // return result;
-
     const result = keys.filter(key=> {
-        return !Object.prototype.propertyIsEnumerable.call(_obj, key)
+        return !Object.getOwnPropertyDescriptor(_obj, key).enumerable
     }) 
     return result;
+
+    // 快
+    // const result = keys.filter(key=> {
+    //     return !Object.prototype.propertyIsEnumerable.call(_obj, key)
+    // }) 
+    // return result;
 }
 
 
