@@ -12,4 +12,4 @@ console.log("delete xxxxxxxxx:", delete xxxxxxxxx); //不可达
 
 var obj = ({})
 console.log("delete .toString:", delete obj.toString); //不可达
-console.log("obj.toString:", obj.toString);
+console.log("obj.toString:", obj.toString); // 虽然返回true，但是不会自动删除原型链

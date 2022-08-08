@@ -12,7 +12,7 @@ function inArrayCompare(arr, num) {
 function inArray(arr, val) {
     // -1 不存在, ~ -1 == 0, 布尔值为 false
     // 其他情况为真值，表示存在
-    if (~arr.indexOf(val)) {
+    if (~arr.indexOf(val)) { // ～-1 》 0
         return true;
     }
     return false;
