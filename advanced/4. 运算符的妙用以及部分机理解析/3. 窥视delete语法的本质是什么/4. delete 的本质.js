@@ -9,7 +9,7 @@ console.log("trees:",trees);
 delete {}
 
 
-var x = 1;
+var x = 1; 
 delete x
 
 
