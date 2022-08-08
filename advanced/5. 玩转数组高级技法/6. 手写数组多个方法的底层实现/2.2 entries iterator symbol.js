@@ -11,7 +11,7 @@ Array.prototype.entries = function () {
     }
     return {
         next,
-        [Symbol.iterator](){
+        [Symbol.iterator](){ // 实现iterator 🔥
             return {
                 next
             }

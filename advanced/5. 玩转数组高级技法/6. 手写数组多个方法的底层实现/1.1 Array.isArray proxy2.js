@@ -11,4 +11,4 @@ log("toString", Object.prototype.toString.call(Proxy))
 
 log("Proxy.prototype:", Proxy.prototype)
 
-log("proxy instanceof Proxy:", proxy instanceof Proxy) 
+log("proxy instanceof Proxy:", proxy instanceof Proxy) // TypeError: Function has non-object prototype 'undefined' in instanceof check

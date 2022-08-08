@@ -22,12 +22,12 @@ var toLength = function (value) {
 
 var push = Array.prototype.push;
 
-Array.prototype.flat = function (deep) {
+Array.prototype.flat = function (deep) { // 🔥
     var O = Object(this);
-    var sourceLen = toLength(O.length);
+    var sourceLen = toLength(O.length); // 长度
     var depthNum = 1;
     if (deep !== undefined) {
-        depthNum = toLength(deep)
+        depthNum = toLength(deep) // 长度
     }
     if (depthNum <= 0) {
         return O;
@@ -36,19 +36,19 @@ Array.prototype.flat = function (deep) {
 
     var val;
     for (var i = 0; i < sourceLen; i++) {
-        if (has.call(O, i)) {
+        if (has.call(O, i)) { // 是不是自身属性
             val = O[i];
-            if (Array.isArray(val)) {
-                push.apply(arr, val.flat(depthNum - 1));
+            if (Array.isArray(val)) { // 是不是数组
+                push.apply(arr, val.flat(depthNum - 1)); // 深度-1 ，递归问题 push替代concat性能问题
             } else {
                 arr.push(val);
             }
         } else {
-            arr.push(undefined);
+            arr.push(undefined); // 空位
         }
     }
 
     return arr;
 }
 
-console.log(array.flat(2))
+console.log(array.flat(3))

@@ -63,7 +63,7 @@ Array.prototype.includes = function (item, fromIndex) {
 
 
 const arr = ['a', 'b', 'c'];
-console.log("arr include -100->0:", arr.includes('c', -100));
-console.log("arr include -100->0:", arr.includes('a', -1));
+console.log("arr include -100->0:", arr.includes('c', -100)); // 0
+console.log("arr include -100->0:", arr.includes('a', -1)); // 2
 console.log("arr include 1:", arr.includes('a', -Infinity));
 console.log("arr include 1:", arr.includes('a', Infinity));

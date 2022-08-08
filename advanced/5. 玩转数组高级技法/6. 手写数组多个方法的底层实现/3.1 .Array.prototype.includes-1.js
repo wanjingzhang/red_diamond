@@ -1,4 +1,4 @@
-Number.isNaN = function (param) {
+Number.isNaN = function (param) { //手写isNaN
   if (typeof param === "number") {
     return isNaN(param);
   }

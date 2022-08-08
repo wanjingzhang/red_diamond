@@ -6,4 +6,4 @@ const flat = arr => {
     }, []);
 };
 
-console.log(flat(array))
+console.log(flat(array)) // 网络版本[ 1, 1 ] 空位被跳过了

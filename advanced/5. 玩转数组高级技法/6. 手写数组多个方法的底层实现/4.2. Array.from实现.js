@@ -1,7 +1,18 @@
+function MyArray(length) {
+    const len = length * 2
+    return new Array(len)
+}
+
+function MyObject(length) {
+    return {
+        length
+    }
+}
+
 //类数组的特征
 var maxSafeInteger = Math.pow(2, 32) - 1;
 
-var ToIntegerOrInfinity = function (value) {
+var ToIntegerOrInfinity = function (value) { // 666
     var number = Number(value);
     if (isNaN(number)) { return 0; }
     if (number === 0 || !isFinite(number)) { return number; }
@@ -35,7 +46,7 @@ Array.from = function (arrayLike, mapFn, thisArg) {
     var len = ToLength(items.length);
     if (len <= 0) return [];
 
-    var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+    var A = isCallable(C) ? Object(new C(len)) : new Array(len); // 666
 
     for (var i = 0; i < len; i++) {
         var value = items[i];
@@ -48,25 +59,16 @@ Array.from = function (arrayLike, mapFn, thisArg) {
     return A;
 }
 
-// console.log("Array.from:", Array.from({ a: 1, length: "10" }));
-// console.log("Array.from:", Array.from({ a: 1, length: "ss" }));
+console.log("Array.from:", Array.from({ a: 1, length: "10" }));
+console.log("Array.from:", Array.from({ a: 1, length: "ss" }));
 
-// console.log("Array.from:", Array.from({ 0: 1, 1: 2, 4: 5, length: 4 }, x => x + x));
+console.log("Array.from:", Array.from({ 0: 1, 1: 2, 4: 5, length: 4 }, x => x + x));
 
 
-function MyArray(length) {
-    const len = length * 2
-    return new Array(len)
-}
 
-function MyObject(length) {
-    return {
-        length
-    }
-}
 
-console.log("Array.from:MyArray", Array.from.call(MyArray, { length: 5 }))
+// console.log("Array.from:MyArray", Array.from.call(MyArray, { length: 5 }))
 
-console.log("Array.from:MyObject", Array.from.call(MyObject, { length: 5 }))
+// console.log("Array.from:MyObject", Array.from.call(MyObject, { length: 5 }))
 
 

@@ -1,5 +1,5 @@
 
-Array.prototype[Symbol.iterator] = function () {
+Array.prototype[Symbol.iterator] = function () { // 提取公用代码
     const O = Object(this);
     let index = 0;
     const length = O.length;
@@ -25,7 +25,7 @@ Array.prototype.entries = function () {
         entries.push([i, O[i]]);
     }
 
-    const itr = this[Symbol.iterator].bind(entries)();
+    const itr = this[Symbol.iterator].bind(entries)(); // 复用迭代
     return {
         next: itr.next,
         [Symbol.iterator]() { return itr }
@@ -41,7 +41,7 @@ Array.prototype.keys = function () {
         keys.push([i]);
     }
 
-    const itr = this[Symbol.iterator].bind(keys)();
+    const itr = this[Symbol.iterator].bind(keys)(); // 复用迭代
     return {
         next: itr.next,
         [Symbol.iterator]() { return itr }
