@@ -9,7 +9,7 @@ function group(arr, fn) {
         throw new TypeError("fn必须是一个函数")
     }
     var v;
-    return arr.reduce((obj, cur, index) => {
+    return arr.reduce((obj, cur, index) => { // 数据分组 🔥
         v = fn(cur, index);
         if (!hasOwn.call(obj, v)) {
             obj[v] = []

@@ -1,4 +1,4 @@
-function compose(...funcs) {
+function compose(...funcs) { // 王者版，以不变应万变🔥 compose从后往前
   if (funcs.length === 0) {
     return arg => arg
   }
@@ -17,7 +17,7 @@ function discountPlus(x) {
   console.log('discountPlus')
   return x * 0.95
 }
-const getPrice = compose(discount, reduce, discountPlus );
+const getPrice = compose(discount, reduce, discountPlus ); //piple 管道
 
 const print = console.log;
 
