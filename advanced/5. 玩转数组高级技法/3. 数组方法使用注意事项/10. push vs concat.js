@@ -7,7 +7,7 @@ console.time("push");
 for(let i=0;i<count;i++){
     newArray.push(array1[0],array1[1],array1[2],array1[3],array1[4])
 }
-console.timeEnd("push");
+console.timeEnd("push"); // 大批量，性能优
 
 
 
